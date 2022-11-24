@@ -8,7 +8,7 @@
             "name": "Zubair Ali",
             "email": "zubair.ali@crowncommercial.gov.uk",
         }
-    ],
+    ]
     "require": {
         "php": ">=7.2",
         "guzzlehttp/guzzle": "~6.5",
