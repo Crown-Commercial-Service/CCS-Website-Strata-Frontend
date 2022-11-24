@@ -1,4 +1,4 @@
-# Strata Frontend
+# CCS Frontend
 
 Deliver fast, accessible user experiences on the modern web.
 
@@ -18,7 +18,7 @@ See the [roadmap](ROADMAP.md) for more details on future development plans.
 ## Installation
 
 ```
-composer require strata/frontend:^0.7
+composer require ccs/frontend:^0.7
 ```
 
 ## Documentation
@@ -32,13 +32,4 @@ Strata is an Open Source project. Find out more about [how to contribute](CONTRI
 
 ## Security Issues
 
-If you discover a security vulnerability within Strata, please follow our [disclosure procedure](SECURITY.md).
-
-## About Us
-
-Strata development is sponsored by [Studio 24](https://www.studio24.net/), led by 
-[Simon R Jones](https://github.com/simonrjones/).
-
-[CHANGELOG]: ./CHANGELOG.md
-[LICENSE]: ./LICENSE
-[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+If you discover a security vulnerability within CCS Frontend, please follow our [disclosure procedure](SECURITY.md).
