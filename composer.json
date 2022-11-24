@@ -5,10 +5,24 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Zubair Ali",
-            "email": "zubair.ali@crowncommercial.gov.uk",
+            "name": "Simon Jones",
+            "email": "simon@studio24.net",
+            "homepage": "https://studio24.net/",
+            "role": "Lead Developer"
+        },
+        {
+            "name": "Matt Buckland",
+            "email": "hello@studio24.net",
+            "homepage": "https://studio24.net/",
+            "role": "Developer"
+        },
+        {
+            "name": "Marie Manandise",
+            "email": "hello@studio24.net",
+            "homepage": "https://studio24.net/",
+            "role": "Developer"
         }
-    ]
+    ],
     "require": {
         "php": ">=7.2",
         "guzzlehttp/guzzle": "~6.5",
