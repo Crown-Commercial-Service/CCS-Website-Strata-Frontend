@@ -1,27 +1,13 @@
 {
-    "name": "strata/frontend",
+    "name": "ccs/frontend",
     "description": "Deliver fast, accessible user experiences on the modern web.",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Simon Jones",
-            "email": "simon@studio24.net",
-            "homepage": "https://studio24.net/",
-            "role": "Lead Developer"
+            "name": "Zubair Ali",
+            "email": "zubair.ali@crowncommercial.gov.uk",
         },
-        {
-            "name": "Matt Buckland",
-            "email": "hello@studio24.net",
-            "homepage": "https://studio24.net/",
-            "role": "Developer"
-        },
-        {
-            "name": "Marie Manandise",
-            "email": "hello@studio24.net",
-            "homepage": "https://studio24.net/",
-            "role": "Developer"
-        }
     ],
     "require": {
         "php": ">=7.2",
