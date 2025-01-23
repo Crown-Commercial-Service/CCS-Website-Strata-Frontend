@@ -8,7 +8,7 @@ namespace Strata\Frontend\Api;
  * Class to manage allowed actions on an API and to protect against misuse
  *
  */
-class Permissions
+class Permissions implements \Stringable
 {
     const READ = 1;
     const WRITE = 2;
@@ -89,7 +89,7 @@ class Permissions
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         $results = [];
         if ($this->read()) {

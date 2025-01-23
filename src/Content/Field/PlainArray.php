@@ -13,7 +13,7 @@ class PlainArray extends ContentField
 {
     const TYPE = 'plainarray';
 
-    protected $content = array();
+    protected $content = [];
 
     /**
      * Create plain array content field

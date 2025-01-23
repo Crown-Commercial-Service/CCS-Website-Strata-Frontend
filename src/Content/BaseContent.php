@@ -10,7 +10,7 @@ use Strata\Frontend\Content\Field\DateTime;
 use Strata\Frontend\Content\Field\Image;
 use Strata\Frontend\ContentModel\ContentType;
 
-class BaseContent implements ContentInterface, AddressableInterface
+class BaseContent implements ContentInterface, AddressableInterface, \Stringable
 {
     /**
      * @var
@@ -79,7 +79,7 @@ class BaseContent implements ContentInterface, AddressableInterface
     {
         $this->content = new ContentFieldCollection();
         $this->featuredImage = null;
-        $this->taxonomies = array();
+        $this->taxonomies = [];
     }
 
     /**
@@ -356,7 +356,7 @@ class BaseContent implements ContentInterface, AddressableInterface
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         $content = '';
         foreach ($this->getContent() as $item) {

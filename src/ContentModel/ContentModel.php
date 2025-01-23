@@ -85,10 +85,7 @@ class ContentModel extends \ArrayIterator
 
     public function getGlobal($name)
     {
-        if (isset($this->global[$name])) {
-            return $this->global[$name];
-        }
-        return null;
+        return $this->global[$name] ?? null;
     }
 
     public function setGlobal($name, $value): ContentModel

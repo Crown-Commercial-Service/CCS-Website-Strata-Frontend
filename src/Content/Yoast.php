@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Strata\Frontend\Content;
 
-class Yoast
+class Yoast implements \Stringable
 {
     protected $title;
     protected $metadescription;
@@ -18,14 +18,14 @@ class Yoast
     public function getTwitter()
     {
         $metatags = "";
-        if (isset($this->twitter["title"]) && strlen($this->twitter["title"]) > 0) {
+        if (isset($this->twitter["title"]) && strlen((string) $this->twitter["title"]) > 0) {
             $metatags .= "<meta name=\"twitter:title\" content=\"" . $this->twitter["title"] . "\">";
             //$head->addMeta('twitter:title', $title);
         }
-        if (isset($this->twitter["description"]) && strlen($this->twitter["description"]) > 0) {
+        if (isset($this->twitter["description"]) && strlen((string) $this->twitter["description"]) > 0) {
             $metatags .= "<meta name=\"twitter:description\" content=\"" . $this->twitter["description"] . "\">";
         }
-        if (isset($this->twitter["image"]) && strlen($this->twitter["image"]) > 0) {
+        if (isset($this->twitter["image"]) && strlen((string) $this->twitter["image"]) > 0) {
             $metatags .= "<meta name=\"twitter:image\" content=\"" . $this->twitter["image"] . "\">";
         }
         return $metatags;
@@ -51,13 +51,13 @@ class Yoast
     public function getOpengraph()
     {
         $metatags = "";
-        if (isset($this->opengraph["title"]) && strlen($this->opengraph["title"]) > 0) {
+        if (isset($this->opengraph["title"]) && strlen((string) $this->opengraph["title"]) > 0) {
             $metatags .= "<meta property=\"og:title\" content=\"" . $this->opengraph["title"] . "\">";
         }
-        if (isset($this->opengraph["description"]) && strlen($this->opengraph["description"]) > 0) {
+        if (isset($this->opengraph["description"]) && strlen((string) $this->opengraph["description"]) > 0) {
             $metatags .= "<meta property=\"og:description\" content=\"" . $this->opengraph["description"] . "\">";
         }
-        if (isset($this->opengraph["image"]) && strlen($this->opengraph["image"]) > 0) {
+        if (isset($this->opengraph["image"]) && strlen((string) $this->opengraph["image"]) > 0) {
             $metatags .= "<meta property=\"og:image\" content=\"" . $this->opengraph["image"] . "\">";
         }
         return $metatags;
@@ -102,7 +102,7 @@ class Yoast
      */
     public function getMetadescription()
     {
-        return strlen($this->metakeywords) > 0 ? "<meta name=\"description\" content=\"" . $this->metadescription . "\">" : "";
+        return strlen((string) $this->metakeywords) > 0 ? "<meta name=\"description\" content=\"" . $this->metadescription . "\">" : "";
     }
 
     /**
@@ -118,7 +118,7 @@ class Yoast
      */
     public function getMetakeywords()
     {
-        return strlen($this->metakeywords) > 0 ? "<meta name=\"keywords\" content=\"" . $this->metakeywords . "\">" : "";
+        return strlen((string) $this->metakeywords) > 0 ? "<meta name=\"keywords\" content=\"" . $this->metakeywords . "\">" : "";
     }
 
     /**
@@ -140,8 +140,8 @@ class Yoast
         return $metatags;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->getAllMetatags();
+        return (string) $this->getAllMetatags();
     }
 }

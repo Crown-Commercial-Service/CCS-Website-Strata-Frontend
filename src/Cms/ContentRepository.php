@@ -172,7 +172,7 @@ abstract class ContentRepository
     {
         $string = (string) $string;
         $string = preg_replace('![{}()\@:]!', '', $string);
-        $string = preg_replace('![\s/]!', '-', $string);
+        $string = preg_replace('![\s/]!', '-', (string) $string);
         return $string;
     }
 

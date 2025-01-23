@@ -95,11 +95,11 @@ class ArrayField extends ContentFieldCollection implements FieldInterface, Conte
 
     public function getApiEndpoint(): string
     {
-        throw new UnimplementedException(sprintf('% is not implemented in %s\%s', __METHOD__, __NAMESPACE__, __CLASS__));
+        throw new UnimplementedException(sprintf('% is not implemented in %s\%s', __METHOD__, __NAMESPACE__, self::class));
     }
 
     public function setApiEndpoint(string $apiEndpoint): ContentType
     {
-        throw new UnimplementedException(sprintf('% is not implemented in %s\%s', __METHOD__, __NAMESPACE__, __CLASS__));
+        throw new UnimplementedException(sprintf('% is not implemented in %s\%s', __METHOD__, __NAMESPACE__, self::class));
     }
 }

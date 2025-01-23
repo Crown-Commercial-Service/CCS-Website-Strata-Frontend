@@ -11,7 +11,7 @@ use Strata\Frontend\Content\ContentInterface;
  *
  * @package Strata\Frontend\Content\Field
  */
-class Component implements ContentInterface
+class Component implements ContentInterface, \Stringable
 {
     protected $name;
 

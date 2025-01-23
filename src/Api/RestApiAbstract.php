@@ -110,7 +110,7 @@ abstract class RestApiAbstract
     public function getBaseUri()
     {
         if (empty($this->baseUri)) {
-            throw new ApiException(sprintf('API base URL not set, please set via %s::setBaseUri()', get_class($this)));
+            throw new ApiException(sprintf('API base URL not set, please set via %s::setBaseUri()', static::class));
         }
 
         return $this->baseUri;
@@ -277,7 +277,7 @@ abstract class RestApiAbstract
         } else {
             $message = sprintf('Failed HTTP response. Expected: %s, Actual: %s, Error: %s', $this->expectedResponseCode, $response->getStatusCode(), $response->getReasonPhrase());
 
-            if (substr((string) $response->getStatusCode(), 0, 1) === '4') {
+            if (str_starts_with((string) $response->getStatusCode(), '4')) {
                 throw new NotFoundException($message, $response->getStatusCode());
             } else {
                 throw new FailedRequestException($message, $response->getStatusCode());

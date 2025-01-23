@@ -9,7 +9,7 @@ namespace Strata\Frontend\ContentModel;
  *
  * @package Strata\Frontend\ContentModel
  */
-class ParseStatus
+class ParseStatus implements \Stringable
 {
     /**
      * Content type
@@ -136,7 +136,7 @@ class ParseStatus
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         $parents = $this->getParents();
         if (count($parents) > 0) {

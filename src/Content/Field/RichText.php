@@ -67,6 +67,6 @@ class RichText extends ContentField
      */
     public function __toString(): string
     {
-        return $this->content;
+        return (string) $this->content;
     }
 }

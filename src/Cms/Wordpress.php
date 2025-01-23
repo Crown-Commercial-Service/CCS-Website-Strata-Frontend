@@ -274,14 +274,14 @@ class Wordpress extends ContentRepository
         if ($results->getPagination()->getTotalResults() === 1) {
             $item = $results->getResponseData()[0];
 
-            $pageUrlParts = parse_url($item['link']);
+            $pageUrlParts = parse_url((string) $item['link']);
             if (rtrim($pageUrlParts['path'], '/') === rtrim($parts['path'], '/')) {
                 $data = $item;
             }
         } else {
             // WP may return multiple results since does a LIKE search on slug on API request
             foreach ($results->getResponseData() as $item) {
-                $pageUrlParts = parse_url($item['link']);
+                $pageUrlParts = parse_url((string) $item['link']);
                 if (rtrim($pageUrlParts['path'], '/') === rtrim($parts['path'], '/')) {
                     $data = $item;
                 }
@@ -386,7 +386,7 @@ class Wordpress extends ContentRepository
 
             if (isset($data['yoast']['metadesc'])) {
                 if (!empty($data['yoast']['metadesc'])) {
-                    $description = strip_tags($data['yoast']['metadesc']);
+                    $description = strip_tags((string) $data['yoast']['metadesc']);
                 }
             }
         }
@@ -600,12 +600,12 @@ class Wordpress extends ContentRepository
                 if (isset($field_data['media_details']['sizes'][$sizeName])) {
                     array_push(
                         $sizesData,
-                        array(
+                        [
                             'url' => $field_data['media_details']['sizes'][$sizeName]['source_url'],
                             'width' => $field_data['media_details']['sizes'][$sizeName]['width'],
                             'height' => $field_data['media_details']['sizes'][$sizeName]['height'],
                             'name' => $sizeName
-                        )
+                        ]
                     );
                 }
             }
@@ -712,7 +712,7 @@ class Wordpress extends ContentRepository
                     break;
 
                 case 'image':
-                    $sizesData = array();
+                    $sizesData = [];
                     if (is_int($value)) {
                         //image ID passed on
                         $field_data = $this->getMediaDataById($value);
@@ -724,12 +724,12 @@ class Wordpress extends ContentRepository
                                 if (isset($field_data['media_details']['sizes'][$sizeName])) {
                                     array_push(
                                         $sizesData,
-                                        array(
+                                        [
                                         'url' => $field_data['media_details']['sizes'][$sizeName]['source_url'],
                                         'width' => $field_data['media_details']['sizes'][$sizeName]['width'],
                                         'height' => $field_data['media_details']['sizes'][$sizeName]['height'],
                                         'name' => $sizeName
-                                        )
+                                        ]
                                     );
                                 }
                             }
@@ -760,12 +760,12 @@ class Wordpress extends ContentRepository
                                 if (isset($value['sizes'][$sizeName])) {
                                     array_push(
                                         $sizesData,
-                                        array(
+                                        [
                                         'url' => $value['sizes'][$sizeName],
                                         'width' => $value['sizes'][$sizeName . '-width'],
                                         'height' => $value['sizes'][$sizeName . '-height'],
                                         'name' => $sizeName
-                                        )
+                                        ]
                                     );
                                 }
                             }
@@ -1035,7 +1035,7 @@ class Wordpress extends ContentRepository
                     $terms = new TermCollection();
                     if (isset($value['term_id'])) {
                         //we've got a single term, not an array of terms
-                        $termsData = array($value);
+                        $termsData = [$value];
                     } else {
                         $termsData = $value;
                     }
@@ -1072,7 +1072,7 @@ class Wordpress extends ContentRepository
 
     public function setPageTaxonomies(array $validTaxonomies, BaseContent $page, array $data)
     {
-        $taxonomies = array();
+        $taxonomies = [];
 
         if (empty($validTaxonomies)) {
             return;

@@ -221,12 +221,12 @@ class WordpressFieldFinder
             }
 
             // Lets check if the key isn't there, and continue if it isn't
-            if (!array_key_exists(strtolower($needle), $data)) {
+            if (!array_key_exists(strtolower((string) $needle), $data)) {
                 continue;
             }
 
             // The needle was found
-            $potentialValue = $data[strtolower($needle)];
+            $potentialValue = $data[strtolower((string) $needle)];
 
             // Did we find an array or a value;
             if (is_array($potentialValue)) {
@@ -252,7 +252,7 @@ class WordpressFieldFinder
                         Assert::string($potentialValue);
                         break;
                 }
-            } catch (\InvalidArgumentException $e) {
+            } catch (\InvalidArgumentException) {
                 // Move on to the next variable
                 continue;
             }
