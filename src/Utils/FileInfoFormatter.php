@@ -24,13 +24,15 @@ class FileInfoFormatter
             return $size;
         }
 
-        $size = match ($sizeInByte) {
-            $sizeInByte < 1024 => $sizeInByte . ' B',
-            $sizeInByte < 1048576 => round($sizeInByte / 1024, 2) . ' KB',
-            $sizeInByte < 1073741824 => round($sizeInByte / 1048576, 2) . ' MB',
-            $sizeInByte < 1099511627776 => round($sizeInByte / 1073741824, 2) . ' GB',
-            $sizeInByte >= 1099511627776 => '1 TB+',
-            default => $size,
+        $sizeInBytes = (int) $sizeInByte; 
+
+        $size = match (true) {
+            (int) $sizeInByte < 1024 => $sizeInByte . ' B',
+            (int) $sizeInByte < 1048576 => round($sizeInByte / 1024, 2) . ' KB',
+            (int) $sizeInByte < 1073741824 => round($sizeInByte / 1048576, 2) . ' MB',
+            (int) $sizeInByte < 1099511627776 => round($sizeInByte / 1073741824, 2) . ' GB',
+            (int) $sizeInByte >= 1099511627776 => '1 TB+',
+            default => '0 B'
         };
 
         return $size;

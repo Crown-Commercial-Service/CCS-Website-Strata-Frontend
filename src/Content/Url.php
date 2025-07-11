@@ -265,6 +265,8 @@ class Url
             default => throw new UrlException(sprintf('Param name %s not recognised!', $param)),
         };
 
+        $value = (string) $value;
+
         return str_ireplace($this->getReplace($param), $value, $url);
     }
 
