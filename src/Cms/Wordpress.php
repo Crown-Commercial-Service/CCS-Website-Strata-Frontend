@@ -323,6 +323,7 @@ class Wordpress extends ContentRepository
         }
 
         // Get data from API
+        $this->api->ignoreErrorCode(404);
         $media_data = $this->api->getMedia($id);
         if (empty($media_data)) {
             return null;
@@ -736,12 +737,12 @@ class Wordpress extends ContentRepository
                         }
 
                         $image = new Image(
-                            $name,
-                            $field_data['source_url'],
-                            $field_data['title']['rendered'],
-                            $field_data['caption']['rendered'],
-                            $field_data['alt_text'],
-                            $sizesData
+                            $name ?? '',
+                            $field_data['source_url'] ?? '',
+                            $field_data['title']['rendered'] ?? '',
+                            $field_data['caption']['rendered'] ?? '',
+                            $field_data['alt_text'] ?? '',
+                            $sizesData ?? ''
                         );
 
                         return $image;
@@ -772,12 +773,12 @@ class Wordpress extends ContentRepository
                         }
 
                         $image = new Image(
-                            $name,
-                            $value['url'],
-                            $value['title'],
-                            $value['caption'],
-                            $value['alt'],
-                            $sizesData
+                            $name ?? '',
+                            $value['url'] ?? '',
+                            $value['title'] ?? '',
+                            $value['caption'] ?? '',
+                            $value['alt'] ?? '',
+                            $sizesData ?? ''
                         );
 
                         return $image;
@@ -788,15 +789,18 @@ class Wordpress extends ContentRepository
                     //given an attachment, request data and create field
                     if (is_int($value)) {
                         $field_data = $this->getMediaDataById($value);
-
-                        $filesize = $this->api->getMediaFileSize($field_data['source_url']);
+                        $this->api->ignoreErrorCode(403);
+        
+                        $filesize = $field_data !== null 
+                            ? $this->api->getMediaFileSize($field_data['source_url']) 
+                            : null;
 
                         $document = new Document(
-                            $name,
-                            $field_data['source_url'],
-                            $filesize,
-                            $field_data['title']['rendered'],
-                            $field_data['alt_text']
+                            $name ?? '',
+                            $field_data['source_url'] ?? '',
+                            $filesize ?? '',
+                            $field_data['title']['rendered'] ?? '',
+                            $field_data['alt_text'] ?? ''
                         );
 
                         return $document;
@@ -809,11 +813,11 @@ class Wordpress extends ContentRepository
                         }
 
                         $document = new Document(
-                            $name,
-                            $value['url'],
-                            $filesize,
-                            $value['title'],
-                            $value['alt']
+                            $name ?? '',
+                            $value['url'] ?? '',
+                            $filesize ?? '',
+                            $value['title'] ?? '',
+                            $value['alt'] ?? ''
                         );
 
                         return $document;
@@ -839,12 +843,12 @@ class Wordpress extends ContentRepository
 
                     $video = new Video(
                         $name,
-                        $field_data['source_url'],
-                        $filesize,
-                        $field_data['media_details']['bitrate'],
-                        $field_data['media_details']['length_formatted'],
-                        $field_data['title']['rendered'],
-                        $field_data['alt_text']
+                        $field_data['source_url'] ?? '',
+                        $filesize ?? '',
+                        $field_data['media_details']['bitrate'] ?? '',
+                        $field_data['media_details']['length_formatted'] ?? '',
+                        $field_data['title']['rendered'] ?? '',
+                        $field_data['alt_text'] ?? ''
                     );
 
                     return $video;
@@ -866,14 +870,14 @@ class Wordpress extends ContentRepository
                     $filesize = FileInfoFormatter::formatFileSize($field_data['media_details']['filesize']);
 
                     $audio = new Audio(
-                        $name,
-                        $field_data['source_url'],
-                        $filesize,
-                        $field_data['media_details']['bitrate'],
-                        $field_data['media_details']['length_formatted'],
-                        $field_data['media_details'],
-                        $field_data['title']['rendered'],
-                        $field_data['alt_text']
+                        $name ?? '',
+                        $field_data['source_url'] ?? '',
+                        $filesize ?? '',
+                        $field_data['media_details']['bitrate'] ?? '',
+                        $field_data['media_details']['length_formatted'] ?? '',
+                        $field_data['media_details'] ?? '',
+                        $field_data['title']['rendered'] ?? '',
+                        $field_data['alt_text'] ?? ''
                     );
 
                     return $audio;
