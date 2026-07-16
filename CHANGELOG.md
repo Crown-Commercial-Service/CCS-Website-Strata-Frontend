@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2026-07-16
+
+### Changed
+- Upgrade to PHP 8
+- Widen `symfony/yaml` and `symfony/http-foundation` to allow Symfony 6 and 7
+- Widen `psr/simple-cache` to allow v2/v3 and `monolog/monolog` to allow v3
+- Widen dev tooling (`phpunit/phpunit`, `overtrue/phplint`) to current major versions
+- Bump `guzzlehttp/guzzle` constraint off a vulnerable pinned range
+- Update CI to test against PHP 8.2/8.3
+
 ## [0.7.0] - 2021-01-06
 
 ### Added
